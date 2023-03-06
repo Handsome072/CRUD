@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Todos {
+  todo_id Int  @default(autoincrement()) @id
+  title String @db.VarChar(255)
+  content String @db.VarChar(255)
+}
+
+// model Types{
+//   type_id Int @id @default(autoincrement())
+//   is_active Boolean @default(false)
+//   description String
+//   role Json @default("[\"user\" , \"admin \"]")
+//   created_at DateTime @default(now())
+// }
+

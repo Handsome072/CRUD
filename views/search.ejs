@@ -1,0 +1,68 @@
+
+<div class="container mt-5 pt-5">
+    <form action="" method="GET">
+        <div class="row ">
+            <div class="col-lg-10 pr-0 ">
+                <input type="search" name="q" required placeholder="Rechercher ici..." class="form-control">
+
+            </div>
+
+            <div class="col-lg-2 pl-0   text-center">
+                <button type="submit" class="btn btn-dark w-100"><span class="fa fa-search"></span></button>
+
+            </div>
+        </div>
+
+    </form>
+
+
+
+    <% if(query){%>
+
+        <table class="table table-dark table-striped mt-5">
+            <thead>
+              <th></th>
+              <th>Title</th>
+              <th>Content</th>
+              <th></th>
+              <th></th>
+              <th></th>
+        
+            </thead>
+        
+            <tbody>
+                <% if (data.length == 0) { %>
+                  
+                        <h3 class="danger mt-3">No result</h3>
+                        
+                    
+                <% } else { %>
+              <% for(let item of data) { %>
+        
+                <tr>
+                  <td></td>
+                  <td>
+                    <%= item.title %>
+                  </td>
+                  <td class="text-left">
+                    <%= item.content %>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-right"><a href="/view/<%= item.todo_id %>" class="btn btn-primary"> <i class="fa fa-eye"></i></a>
+                    <a href="/update/<%= item.todo_id %>" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
+                    <a href="/delete/<%= item.todo_id %>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                  </td>
+                </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+        
+        
+          </table>
+        
+        <% } %>
+
+
+        <a href="/" class="btn btn-success"> <i class="fa fa-arrow-circle-left"></i> Acceuil</a>
+</div>
